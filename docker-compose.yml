@@ -11,7 +11,7 @@ services:
     volumes:
       - ./package.json:/app/package.json
       - ./package-log.json:/app/package-log.json
-      - ./client:/app/client:delegated
+      - ./client:/app/client
       - ./dpaste/static:/app/dpaste/static
 
   app:
@@ -29,7 +29,7 @@ services:
       DATABASE_URL: sqlite:////db/dpaste.sqlite
       PORT: 8000
     volumes:
-      - .:/app:delegated
+      - .:/app
       - data_collectstatic:/collectstatic
       - data_db:/db
     ports:
@@ -40,7 +40,7 @@ services:
     image: app
     command: ./manage.py migrate --noinput
     volumes:
-      - .:/app:delegated
+      - .:/app
       - data_db:/db
 
 volumes:
